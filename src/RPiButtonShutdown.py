@@ -12,4 +12,9 @@ def print_test():
 btn = Button(18)
 
 # Action code for when the button ir pressed
+while True:
+    if btn.is_pressed:
+        print_test()
+    else:
+        print("Button not pressed")
 btn.when_pressed = print_test
