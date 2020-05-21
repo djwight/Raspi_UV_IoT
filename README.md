@@ -19,4 +19,4 @@ Project to make a battery powered IoT device for the measurement of UV radiation
 
 ### Prototype v1
 
-![Breadboard of the v1 set-up](images/IMG_20200521_183127.jpg)
+![Breadboard of the v1 set-up](images/IMGBreadboardv1.jpg)
