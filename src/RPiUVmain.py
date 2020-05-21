@@ -42,7 +42,7 @@ def loop():
             # UV measurements
             uva = UV_VEML6075.getUva()
             uvb = UV_VEML6075.getUvb()
-            uvi = UV_VEML6075.getUvi(Uva, Uvb)
+            uvi = UV_VEML6075.getUvi(uva, uvb)
 
             # Printing script
             print("\n============== Results ==============")
