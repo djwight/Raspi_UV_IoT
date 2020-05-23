@@ -24,19 +24,32 @@ Project to make a battery powered IoT device for the measurement of UV radiation
 ### Prototype Device v1
 
 **Initial set up of the device Prototype on the Breadboard**
+
 ![Breadboard of the v1 set-up](images/IMGBreadboardv1.jpg)
 
 
 ### Software- Python
 
-**IoT recorder every 1 minute**
-Program to record temperature, UVA, UVB and UVindex every 10s and dump these into a json file every minute can be done by adding the following to the Raspberry Pi startup scripts:
+**IoT UV/temp recorder**
+
+Program to record temperature, UVA, UVB and UVindex every 10s and dump these into a json file every minute can be done by adding the following to the Raspberry Pi startup scripts for running after boot:
 
 > startupBash.sh
 
-This automatically starts the main python script upon boot up:
+Python script run by startupBash:
 
-> RPiUVmeasureMain.py
+> python/RPiUVmeasureMain.py
 
+**Temp and UV print to terminal**
+
+> python/RPiUVmain.py
+
+**Shutdown button**
+
+> python/shutdownSwitch/RPiButtonShutdown.py
+
+> python/shutdownSwitch/RPiTempShutdown.py
+
+(with temperature measurement)
 
 ### Software- julia
