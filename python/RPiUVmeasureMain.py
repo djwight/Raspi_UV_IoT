@@ -1,8 +1,10 @@
 import os
+import json
 from gpiozero import Button
 import RPi.GPIO as GPIO
 from ADCDevice import *
 import time
+from datetime import datetime
 import math
 from DFRobot_VEML6075 import DFRobot_VEML6075
 
@@ -55,22 +57,23 @@ def loop():
                 min_dict['uva'] = uva_lst
                 min_dict['uvb'] = uvb_lst
                 min_dict['uvi'] = uvi_lst
-                file_time = time.now()
+                file_time = datetime.now()
                 fpath = "data/"
                 date = file_time.strftime("%Y-%m")
-                hour = file_time.strftime("%H_%M")
-                filename = "IoT_UV_" + date + "__" + time + ".json"
+                hour_min = file_time.strftime("%H_%M")
+                filename = "IoT_UV_" + date + "__" + hour_min + ".json"
                 if not os.path.exists(fpath):
                     os.makedirs(fpath)
-                with open(filename, 'w') as json:
-                    json.dump(min_dict, json)
+                file_wpath = fpath + filename
+                with open(file_wpath, 'w') as jf:
+                    json.dump(min_dict, jf)
                 min_dict = {}
                 temp = []
                 uva_lst = []
                 uvb_lst = []
                 uvi_lst = []
                 ts = []
-            time.sleep(10)
+            time.sleep(6)
 
             # Printing script
             # print("\n============== Results ==============")
