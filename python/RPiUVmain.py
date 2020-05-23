@@ -52,6 +52,7 @@ def loop():
             # Printing script
             print("\n============== Results ==============")
             print(f"Temp Celcius:   {round(tempC, 2)}")
+            print(f"Thermistor voltage:     {round(voltage, 2)}")
            # print(f"Light value:    {round(l_value, 4)}")
            # print(f"Light voltage:    {round(l_voltage, 2)}")
             print(f"UVA:   {round(uva, 2)}")
