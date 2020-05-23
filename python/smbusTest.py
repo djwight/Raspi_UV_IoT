@@ -7,8 +7,7 @@ A1 = 0x41
 A2 = 0x42
 A3 = 0x43
 
-bus_1 = smbus.SMBus(1)
-bus_2 = smbus
+bus = smbus.SMBus(1)
 while True:
     bus.write_byte(address, A0)
     therm_value = bus.read_byte(address)
