@@ -34,7 +34,7 @@ def loop():
             # break
         else:
             # Temperature measurement
-            value = adc.analogRead(0)
+            value = adc.analogRead(1)
             voltage = value/255.0*3.3
             Rt = 10*voltage/(3.3-voltage)
             tempK = 1/(1/(273.15 + 25) + math.log(Rt/10)/3950.0)
