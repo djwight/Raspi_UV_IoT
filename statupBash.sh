@@ -1,1 +1,1 @@
-python Documents/programs/Raspi_UV_IoT/RPiUVmeasureMain.py
+python /**/RPiUVmeasureMain.py
