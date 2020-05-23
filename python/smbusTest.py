@@ -9,7 +9,7 @@ A3 = 0x43
 
 bus = smbus.SMBus(1)
 while True:
-    bus.write_byte(adress, A0)
+    bus.write_byte(address, A0)
     value = bus.read_byte(address)
     vol = value*3.3/255
     print(f"A0:     {round(vol, 2)}")
