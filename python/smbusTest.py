@@ -27,9 +27,9 @@ def read(chn):  # channel
 
 while True:
     print(f"AIN0:    {read(0)}")
-    print(f"AIN1:    {read(1)}")
-    print(f"AIN2:    {read(2)}")
-    print(f"AIN3:    {read(3)}")
+    #print(f"AIN1:    {read(1)}")
+    #print(f"AIN2:    {read(2)}")
+    #print(f"AIN3:    {read(3)}")
     time.sleep(2)
 
 
