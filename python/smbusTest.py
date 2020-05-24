@@ -26,7 +26,12 @@ def read(chn):  # channel
     return bus.read_byte(address)
 
 while True:
-    print(f"AIN0:    {read(0)}")
+    value = read(0)
+    voltage = value/255.0*3.3
+    Rt = 10*voltage/(3.3-voltage)
+    tempK = 1/(1/(273.15 + 25) + math.log(Rt/10)/3950.0)
+    tempC = tempK - 273.15
+    print(f"AIN0:    {tempC}")
     #print(f"AIN1:    {read(1)}")
     #print(f"AIN2:    {read(2)}")
     #print(f"AIN3:    {read(3)}")
