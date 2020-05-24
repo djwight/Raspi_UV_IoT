@@ -1,5 +1,6 @@
 import smbus
 import time
+import math
 
 address = 0x48
 A0 = 0x40
