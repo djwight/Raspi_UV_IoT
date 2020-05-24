@@ -16,6 +16,7 @@ def setup():
 
 
 def read(chn):  # channel
+    address = 0x48
     A0 = 0x40
     A1 = 0x41
     A2 = 0x42
