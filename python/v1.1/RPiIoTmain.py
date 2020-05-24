@@ -84,7 +84,7 @@ def loop():
                 min_dict['uvi'] = uvi_lst
                 file_time = datetime.now()
                 fpath = "data/"
-                date = file_time.strftime("%Y-%m")
+                date = file_time.strftime("%Y-%m-%d")
                 hour_min = file_time.strftime("%H_%M")
                 filename = "IoT_UV_" + date + "__" + hour_min + ".json"
                 if not os.path.exists(fpath):
@@ -103,7 +103,6 @@ def loop():
 
 
 def destroy():
-    adc.close()
     GPIO.cleanup()
 
 
