@@ -17,18 +17,36 @@ Project to make a battery powered IoT device for the measurement of UV radiation
 
 - Raspberry Pi Zero W
 - Thermistor
+- Photoresistor
 - PCF8591 (or another ADC)
 - 5000 or 10000 mAh powerbank
 - VEML6075 UV sensor
 
-### Prototype Device v1
+### Prototype v1.1
+
+**v1.1 set up on the Breadboard**
+
+![Breadboard of the v1.1 set-up](images/IMGBreadboardv1_1.jpg)
+
+### Software v1.1- Python
+
+**IoT Recordings**
+
+Program to record temperature, light levels, UVA, UVB and UVindex every 10s and dump these into a json file every minute :
+
+> python/v1.1/RPiIoTmain.py
+
+Can be run as a start-up script using:
+
+> startupBash.sh
+
+### Prototype Device v1.0
 
 **Initial set up of the device Prototype on the Breadboard**
 
 ![Breadboard of the v1 set-up](images/IMGBreadboardv1.jpg)
 
-
-### Software- Python
+### Software v1.0- Python
 
 **IoT UV/temp recorder**
 
@@ -38,7 +56,7 @@ Program to record temperature, UVA, UVB and UVindex every 10s and dump these int
 
 Python script run by startupBash:
 
-> python/RPiUVmeasureMain.py
+> python/v1.0/RPiUVmeasureMain.py
 
 **Temp and UV print to terminal**
 
