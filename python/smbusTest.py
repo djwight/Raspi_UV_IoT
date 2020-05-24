@@ -33,9 +33,9 @@ while True:
     tempK = 1/(1/(273.15 + 25) + math.log(Rt/10)/3950.0)
     tempC = tempK - 273.15
     print(f"AIN0:    {tempC}")
-    #print(f"AIN1:    {read(1)}")
-    #print(f"AIN2:    {read(2)}")
-    #print(f"AIN3:    {read(3)}")
+    print(f"AIN1:    {read(1)}")
+    print(f"AIN2:    {read(2)}")
+    print(f"AIN3:    {read(3)}")
     time.sleep(2)
 
 
