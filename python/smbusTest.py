@@ -21,9 +21,9 @@ def read(chn):  # channel
         if chn == 3:
             bus.write_byte(address, A3)
         bus.read_byte(address)  # dummy read to start conversion
-        except Exception, e:
-            print "Address: %s" % address
-            print e
+    except Exception, e:
+        print "Address: %s" % address
+        print e
     return bus.read_byte(address)
 
 while True:
