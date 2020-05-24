@@ -26,10 +26,11 @@ def read(chn):  # channel
     return bus.read_byte(address)
 
 while True:
-    print('AIN0:    {read(0)}')
-    print('AIN0:    {read(1)}')
-    print('AIN0:    {read(2)}')
-    print('AIN0:    {read(3)}')
+    A0_val = read(0)
+    print(f"AIN0:    {A0_val}")
+    print(f"AIN0:    {read(1)}")
+    print(f"AIN0:    {read(2)}")
+    print(f"AIN0:    {read(3)}")
 
 
 """
