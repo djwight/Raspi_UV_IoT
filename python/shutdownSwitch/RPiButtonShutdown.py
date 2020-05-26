@@ -15,9 +15,9 @@ btn = Button(18, hold_time=4)
 # Action code for when the button ir pressed
 if __name__ == "__main__":
     while True:
-        time.sleep(0.5)
+        time.sleep(1)
         if btn.is_held:
            shutdown()
            # print_test()
-        else:
-            print("Running regular script....")
+        #else:
+        #    print("Running regular script....")
