@@ -34,14 +34,15 @@ def loop():
             # break
         else:
             # Temperature measurement
-            value = adc.analogRead(1)
+            value = adc.analogRead(0)
             voltage = value/255.0*3.3
             Rt = 10*voltage/(3.3-voltage)
             tempK = 1/(1/(273.15 + 25) + math.log(Rt/10)/3950.0)
             tempC = tempK - 273.15
+            time.sleep(1)  #solution from freenove that doesn't work
 
             # Light measurement
-            l_value = adc.analogRead(2)
+            l_value = adc.analogRead(1)
             l_voltage = l_value/255.0*3.3
 
             # UV measurements
