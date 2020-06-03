@@ -13,11 +13,11 @@ def changing_var(device):
     nf = ImageFont.truetype(font_path, size)  # new font
     for i in range(100):
         with canvas(device) as draw:
-        draw.text((28, 7), 'Changing var.', fill=1)
-        if i < 10:
-            draw.text((50,22),'0{}'.format(str(i)),font=nf,fill=1)
-        else:
-            draw.text((50, 22), str(i), font=nf, fill=1)
+            draw.text((28, 7), 'Changing var.', fill=1)
+            if i < 10:
+                draw.text((50,22),'0{}'.format(str(i)),font=nf,fill=1)
+            else:
+                draw.text((50, 22), str(i), font=nf, fill=1)
             time.sleep(0.001)
 
 
