@@ -16,7 +16,7 @@ def bme280_setup():
     global address
     address = 0x76
     global calibration_params
-    calibration_params = bme280.load_calabration_params(bus, address)
+    calibration_params = bme280.load_calibration_params(bus, address)
 
 
 def loop():
@@ -104,7 +104,7 @@ if __name__ == "__main__":
         time.sleep(2)
     print("UV sensor boot success...")
     try:
-        setup()
+        bme280_setup()
         loop()
     except KeyboardInterrupt:
         destroy()
