@@ -13,7 +13,7 @@ def changing_var(device):
     nf = ImageFont.truetype(font_path, size)  # new font
     for i in range(100):
         with canvas(device) as draw:
-            draw.text((64, 0), str(i), font=nf, fill=1)
+            draw.text((0, 0), str(i), font=nf, fill=1)
             time.sleep(0.005)
 
 
@@ -26,7 +26,7 @@ def primitives(device):
 
 try:
     serial = i2c(port=1, address=0x3c)
-    device = sh1106(serial, rotate=1, width=64, height=126)
+    device = sh1106(serial, rotate=0, width=126, height=64)
     print('[Press CTRL + C to end the script!]')
     while True:
         print('Testing printing variable.')
