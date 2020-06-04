@@ -128,10 +128,10 @@ def destroy():
 
 def shutdown():
     print('Button pressed- system shutting down...')
-    size = 40
+    size = 14
     fformat = ImageFont.truetype(font_path, size)
     with canvas(device) as draw:
-        draw.text((30, 10), "IoT Device shutting down...", font=fformat, fill=1)
+        draw.text((2, 10), "IoT device shutting down...\nGoodbye", font=fformat, fill=1)
         time.sleep(1)
     os.system('sudo shutdown -h now')
 
