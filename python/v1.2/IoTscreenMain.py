@@ -39,10 +39,10 @@ def screen_display(device, date_time, uva, uvb, tempC, humid, pressure):
         draw.text((50, 50), f"Pressu {str(int(pressure))}hPa", font=nf, fill=1)
 
 def screen_on_off():
-    if device.hide() == True:
-        device.show()
-    else:
+    if device.show() == True:
         device.hide()
+    else:
+        device.show()
 
 
 def loop():
