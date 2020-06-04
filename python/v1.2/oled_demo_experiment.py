@@ -11,18 +11,14 @@ font_path = 'ChiKareGo.ttf'
 def changing_var(device):
     size = 18
     nf = ImageFont.truetype(font_path, size)  # new font
-    with canvas(device) as draw:
-        # Draw an X.
-        draw.line((0, 4, 128, 4), fill=1)
     for i in range(100):
         with canvas(device) as draw:
-            draw.line((0, 4, 128, 4), fill=1)
-            draw.text((70, 0), f"Date", font=nf, fill=1)
+            draw.text((70, 10), f"Date", font=nf, fill=1)
             draw.text((5, 20), f"UVA {str(i)}", font=nf, fill=1)
             draw.text((70, 20), f"UVB {str(i)}", font=nf, fill=1)
             draw.text((5, 40), f"Temp {str(i)}", font=nf, fill=1)
             draw.text((70, 40), f"Humidity {str(i)}", font=nf, fill=1)
-            time.sleep(0.1)
+            time.sleep(0.01)
 
 
 def primitives(device):
@@ -35,7 +31,6 @@ try:
     serial = i2c(port=1, address=0x3c)
     device = sh1106(serial, rotate=0, width=128, height=64)
     while True:
-        #primitives(device)
         changing_var(device)
         time.sleep(2)
         device.clear()
