@@ -32,10 +32,10 @@ def screen_display(device, date_time, uva, uvb, tempC, humid, pressure):
     datef = ImageFont.truetype(font_path, 11)
     with canvas(device) as draw:
         draw.text((1, 10), f"{date_time}", font=datef, fill=1)
-        draw.text((1, 30), f"UVa {str(round(uva, 2))}", font=nf, fill=1)
-        draw.text((2, 45), f"UVb {str(round(uvb, 2))}", font=nf, fill=1)
-        draw.text((50, 20), f"Temp {str(round(tempC, 1))}oC", font=nf, fill=1)
-        draw.text((50, 35), f"Humid {str(int(humid))}%rH", font=nf, fill=1)
+        draw.text((1, 25), f"UVa {str(round(uva, 2))}", font=nf, fill=1)
+        draw.text((1, 45), f"UVb {str(round(uvb, 2))}", font=nf, fill=1)
+        draw.text((50, 25), f"Temp {str(round(tempC, 1))}oC", font=nf, fill=1)
+        draw.text((50, 38), f"Humid {str(int(humid))} %", font=nf, fill=1)
         draw.text((50, 50), f"Pressu {str(int(pressure))}hPa", font=nf, fill=1)
 
 
