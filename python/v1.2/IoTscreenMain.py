@@ -127,10 +127,10 @@ def destroy():
 
 def shutdown(device):
     print('Button pressed- system shutting down...')
-    size = 14
+    size = 12
     fformat = ImageFont.truetype(font_path, size)
     with canvas(device) as draw:
-        draw.text((2, 10), "IoT device shutting down...", font=fformat, fill=1)
+        draw.text((2, 20), "Shutting down...", font=fformat, fill=1)
     time.sleep(2)
     destroy()
     time.sleep(0.5)
