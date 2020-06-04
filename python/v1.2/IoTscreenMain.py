@@ -58,8 +58,6 @@ def loop():
     uvi_lst = []
     ts = []
     while True:
-        btn.when_pressed = screen_off
-        btn_on.when_held = screen_on
         if btn.is_held:
             destroy()
             shutdown()
@@ -130,6 +128,11 @@ def destroy():
 
 def shutdown():
     print('Button pressed- system shutting down...')
+    size = 40
+    fformat = ImageFont.truetype(font_path, size)
+    with canvas(device) as draw:
+        draw.text((30, 10), "IoT Device shutting down...", font=fformat, fill=1)
+        time.sleep(1)
     os.system('sudo shutdown -h now')
 
 
@@ -137,7 +140,6 @@ def shutdown():
 if __name__ == "__main__":
     print("Starting...")
     btn = Button(18, hold_time=5)
-    btn_on = Button(18, hold_time=1)
     UV_VEML6075 = DFRobot_VEML6075(1, 0x10)
     while UV_VEML6075.begin() != True:
         print("UV sensor boot failed!")
