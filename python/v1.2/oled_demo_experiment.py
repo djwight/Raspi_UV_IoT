@@ -9,13 +9,13 @@ font_path = 'ChiKareGo.ttf'
 
 
 def changing_var(device):
-    size = 24
+    size = 20
     nf = ImageFont.truetype(font_path, size)  # new font
     for i in range(100):
         with canvas(device) as draw:
-            draw.text((10, 5), f"UVA {str(i)}", font=nf, fill=1)
-            draw.text((70, 5), f"UVB {str(i)}", font=nf, fill=1)
-            draw.text((10, 40), f"Temp {str(i)}", font=nf, fill=1)
+            draw.text((5, 20), f"UVA {str(i)}", font=nf, fill=1)
+            draw.text((70, 20), f"UVB {str(i)}", font=nf, fill=1)
+            draw.text((5, 40), f"Temp {str(i)}", font=nf, fill=1)
             draw.text((70, 40), f"Humidity {str(i)}", font=nf, fill=1)
             time.sleep(0.01)
 
