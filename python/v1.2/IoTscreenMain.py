@@ -38,6 +38,12 @@ def screen_display(device, date_time, uva, uvb, tempC, humid, pressure):
         draw.text((50, 38), f"Humid {str(int(humid))} %", font=nf, fill=1)
         draw.text((50, 50), f"Pressu {str(int(pressure))}hPa", font=nf, fill=1)
 
+def screen_on_off():
+    if device.hide() == True:
+        device.show()
+    else:
+        device.hide()
+
 
 def loop():
     # Data collection
@@ -50,6 +56,7 @@ def loop():
     uvi_lst = []
     ts = []
     while True:
+        btn.when_pressed = screen_on_off
         if btn.is_held:
             destroy()
             shutdown()
@@ -114,6 +121,7 @@ def loop():
 
 
 def destroy():
+    device.clear()
     GPIO.cleanup()
 
 
