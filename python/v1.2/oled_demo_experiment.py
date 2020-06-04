@@ -10,14 +10,15 @@ font_path = 'ChiKareGo.ttf'
 
 def changing_var(device):
     size = 18
-    nf = ImageFont.truetype(font_path, size)  # new font
+    nf = ImageFont.truetype(font_path, size)
+    datef = ImageFont.truetype(font_path, 14)
     for i in range(100):
         with canvas(device) as draw:
             draw.text((70, 10), f"Date", font=nf, fill=1)
-            draw.text((5, 20), f"UVA {str(i)}", font=nf, fill=1)
-            draw.text((70, 20), f"UVB {str(i)}", font=nf, fill=1)
-            draw.text((5, 40), f"Temp {str(i)}", font=nf, fill=1)
-            draw.text((70, 40), f"Humidity {str(i)}", font=nf, fill=1)
+            draw.text((5, 25), f"UVA {str(i)}", font=nf, fill=1)
+            draw.text((70, 25), f"UVB {str(i)}", font=nf, fill=1)
+            draw.text((5, 45), f"Temp {str(i)}", font=nf, fill=1)
+            draw.text((70, 45), f"Humidity {str(i)}", font=nf, fill=1)
             time.sleep(0.01)
 
 
