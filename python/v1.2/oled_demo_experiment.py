@@ -9,22 +9,21 @@ font_path = 'ChiKareGo.ttf'
 
 
 def changing_var(device):
-    size = 30
+    size = 24
     nf = ImageFont.truetype(font_path, size)  # new font
     for i in range(100):
         with canvas(device) as draw:
-            draw.text((10, 0), str(i), font=nf, fill=1)
-            draw.text((40, 0), str(i), font=nf, fill=1)
-            draw.text((10, 20), str(i), font=nf, fill=1)
-            draw.text((40, 20), str(i), font=nf, fill=1)
+            draw.text((10, 5), f"UVA {str(i)}", font=nf, fill=1)
+            draw.text((70, 5), f"UVB {str(i)}", font=nf, fill=1)
+            draw.text((10, 40), f"Temp {str(i)}", font=nf, fill=1)
+            draw.text((70, 40), f"Humidity {str(i)}", font=nf, fill=1)
             time.sleep(0.01)
 
 
 def primitives(device):
     with canvas(device) as draw:
         # Draw an X.
-        draw.line((4, 48, 64, 48), fill=1)
-        draw.line((4, 62, 64, 62), fill=1)
+        draw.line((0, 4, 128, 4), fill=1)
 
 
 try:
@@ -33,12 +32,9 @@ try:
     print('[Press CTRL + C to end the script!]')
     while True:
         print('Testing printing variable.')
+        primitives(device)
         changing_var(device)
         time.sleep(2)
-        print('Testing basic graphics.')
-        primitives(device)
-        time.sleep(3)
-        print('Testing clearing display.\n')
         device.clear()
         time.sleep(2)
 except KeyboardInterrupt:
