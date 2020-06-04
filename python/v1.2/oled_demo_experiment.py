@@ -13,6 +13,8 @@ def changing_var(device):
     nf = ImageFont.truetype(font_path, size)  # new font
     for i in range(100):
         with canvas(device) as draw:
+            draw.line((0, 4, 128, 4), fill=1)
+            draw.text((70, 0), f"Date", font=nf, fill=1)
             draw.text((5, 20), f"UVA {str(i)}", font=nf, fill=1)
             draw.text((70, 20), f"UVB {str(i)}", font=nf, fill=1)
             draw.text((5, 40), f"Temp {str(i)}", font=nf, fill=1)
