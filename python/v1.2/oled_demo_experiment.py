@@ -15,10 +15,10 @@ def changing_var(device):
     for i in range(100):
         with canvas(device) as draw:
             draw.text((50, 10), f"Date", font=nf, fill=1)
-            draw.text((5, 25), f"UVA {str(i)}", font=nf, fill=1)
-            draw.text((70, 25), f"UVB {str(i)}", font=nf, fill=1)
-            draw.text((5, 45), f"Temp {str(i)}", font=nf, fill=1)
-            draw.text((70, 45), f"Humidity {str(i)}", font=nf, fill=1)
+            draw.text((2, 25), f"UVA {str(i)}", font=nf, fill=1)
+            draw.text((60, 25), f"UVB {str(i)}", font=nf, fill=1)
+            draw.text((2, 45), f"Temp {str(i)}", font=nf, fill=1)
+            draw.text((60, 45), f"Humidity {str(i)}", font=nf, fill=1)
             time.sleep(0.01)
 
 
