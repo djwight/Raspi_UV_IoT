@@ -38,8 +38,13 @@ def screen_display(device, date_time, uva, uvb, tempC, humid, pressure):
         draw.text((50, 38), f"Humid {str(int(humid))} %", font=nf, fill=1)
         draw.text((50, 50), f"Pressu {str(int(pressure))}hPa", font=nf, fill=1)
 
-def screen_on_off():
-        device.toggle()
+
+def screen_off():
+    device.hide()
+
+
+def screen_on():
+    device.show()
 
 
 def loop():
@@ -53,7 +58,8 @@ def loop():
     uvi_lst = []
     ts = []
     while True:
-        btn.when_pressed = screen_on_off
+        btn.when_pressed = screen_off
+        btn_on.when_held = screen_on
         if btn.is_held:
             destroy()
             shutdown()
@@ -130,7 +136,8 @@ def shutdown():
 # Main script
 if __name__ == "__main__":
     print("Starting...")
-    btn = Button(18, hold_time=4)
+    btn = Button(18, hold_time=5)
+    btn_on = Button(18, hold_time=1)
     UV_VEML6075 = DFRobot_VEML6075(1, 0x10)
     while UV_VEML6075.begin() != True:
         print("UV sensor boot failed!")
