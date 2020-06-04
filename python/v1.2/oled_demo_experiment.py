@@ -9,9 +9,9 @@ font_path = 'FreePixel.ttf'
 
 
 def changing_var(device):
-    size = 13
+    size = 12
     nf = ImageFont.truetype(font_path, size)
-    datef = ImageFont.truetype(font_path, 14)
+    datef = ImageFont.truetype(font_path, 13)
     for i in range(100):
         with canvas(device) as draw:
             draw.text((2, 10), f"Date", font=datef, fill=1)
