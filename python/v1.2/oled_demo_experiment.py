@@ -14,12 +14,12 @@ def changing_var(device):
     datef = ImageFont.truetype(font_path, 14)
     for i in range(100):
         with canvas(device) as draw:
-            draw.text((50, 10), f"Date", font=nf, fill=1)
+            draw.text((2, 10), f"Date", font=nf, fill=1)
             draw.text((2, 25), f"UVA {str(i)}", font=nf, fill=1)
             draw.text((2, 45), f"UVB {str(i)}", font=nf, fill=1)
             draw.text((55, 20), f"Temp {str(i)}", font=nf, fill=1)
             draw.text((55, 35), f"Humidity {str(i)}", font=nf, fill=1)
-            draw.text((55, 50), f"Pressure {str(i)}", font=nf, fill=1)
+            draw.text((55, 55), f"Pressure {str(i)}", font=nf, fill=1)
             time.sleep(0.01)
 
 
