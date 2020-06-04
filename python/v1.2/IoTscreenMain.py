@@ -14,6 +14,8 @@ from luma.oled.device import sh1106
 from luma.core.render import canvas
 from PIL import ImageFont
 
+font_path = 'FreePixel.ttf'
+
 
 def bme280_setup():
     global bus
