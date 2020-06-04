@@ -19,7 +19,7 @@ def changing_var(device):
             draw.text((2, 45), f"UVB {str(i)}", font=nf, fill=1)
             draw.text((55, 20), f"Temp {str(i)}", font=nf, fill=1)
             draw.text((55, 35), f"Humidity {str(i)}", font=nf, fill=1)
-            draw.text((55, 45), f"Pressure {str(i)}", font=nf, fill=1)
+            draw.text((55, 50), f"Pressure {str(i)}", font=nf, fill=1)
             time.sleep(0.01)
 
 
