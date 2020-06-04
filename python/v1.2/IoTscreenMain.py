@@ -59,7 +59,7 @@ def loop():
     ts = []
     while True:
         if btn.is_held:
-            shutdown()
+            shutdown(device)
         else:
             # Temperature, pressure and humidity measurement
             bme280_data = bme280.sample(bus, address, calibration_params)
@@ -125,13 +125,13 @@ def destroy():
     GPIO.cleanup()
 
 
-def shutdown():
+def shutdown(device):
     print('Button pressed- system shutting down...')
     size = 14
     fformat = ImageFont.truetype(font_path, size)
     with canvas(device) as draw:
         draw.text((2, 10), "IoT device shutting down...", font=fformat, fill=1)
-        time.sleep(2)
+    time.sleep(2)
     destroy()
     time.sleep(0.5)
     os.system('sudo shutdown -h now')
