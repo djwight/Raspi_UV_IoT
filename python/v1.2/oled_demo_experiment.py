@@ -5,11 +5,11 @@ from luma.oled.device import sh1106
 from luma.core.render import canvas
 from PIL import ImageFont
 
-font_path = 'ChiKareGo.ttf'
+font_path = 'FreePixel.ttf'
 
 
 def changing_var(device):
-    size = 12
+    size = 13
     nf = ImageFont.truetype(font_path, size)
     datef = ImageFont.truetype(font_path, 14)
     for i in range(100):
