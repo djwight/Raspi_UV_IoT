@@ -17,9 +17,9 @@ def changing_var(device):
             draw.text((50, 10), f"Date", font=nf, fill=1)
             draw.text((2, 25), f"UVA {str(i)}", font=nf, fill=1)
             draw.text((2, 45), f"UVB {str(i)}", font=nf, fill=1)
-            draw.text((60, 20), f"Temp {str(i)}", font=nf, fill=1)
-            draw.text((60, 30), f"Humidity {str(i)}", font=nf, fill=1)
-            draw.text((60, 40), f"Pressure {str(i)}", font=nf, fill=1)
+            draw.text((55, 20), f"Temp {str(i)}", font=nf, fill=1)
+            draw.text((55, 35), f"Humidity {str(i)}", font=nf, fill=1)
+            draw.text((55, 45), f"Pressure {str(i)}", font=nf, fill=1)
             time.sleep(0.01)
 
 
