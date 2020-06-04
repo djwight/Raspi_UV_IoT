@@ -59,7 +59,6 @@ def loop():
     ts = []
     while True:
         if btn.is_held:
-            destroy()
             shutdown()
         else:
             # Temperature, pressure and humidity measurement
@@ -122,6 +121,7 @@ def loop():
 
 
 def destroy():
+    device.clear()
     GPIO.cleanup()
 
 
@@ -132,7 +132,8 @@ def shutdown():
     with canvas(device) as draw:
         draw.text((2, 10), "IoT device shutting down...", font=fformat, fill=1)
         time.sleep(2)
-    device.clear()
+    destroy()
+    time.sleep(0.5)
     os.system('sudo shutdown -h now')
 
 
