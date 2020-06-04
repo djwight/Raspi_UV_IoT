@@ -26,7 +26,7 @@ def primitives(device):
 
 try:
     serial = i2c(port=1, address=0x3c)
-    device = sh1106(serial, rotate=1, width=128, height=64)
+    device = sh1106(serial, rotate=3, width=128, height=64)
     print('[Press CTRL + C to end the script!]')
     while True:
         print('Testing printing variable.')
