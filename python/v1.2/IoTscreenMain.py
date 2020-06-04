@@ -27,16 +27,16 @@ def bme280_setup():
 
 
 def screen_display(device, date_time, uva, uvb, tempC, humid, pressure):
-    size = 11
+    size = 10
     nf = ImageFont.truetype(font_path, size)
-    datef = ImageFont.truetype(font_path, 10)
+    datef = ImageFont.truetype(font_path, 11)
     with canvas(device) as draw:
         draw.text((1, 10), f"{date_time}", font=datef, fill=1)
         draw.text((1, 30), f"UVa {str(round(uva, 2))}", font=nf, fill=1)
         draw.text((2, 45), f"UVb {str(round(uvb, 2))}", font=nf, fill=1)
-        draw.text((52, 20), f"Temp {str(round(tempC, 1))}oC", font=nf, fill=1)
-        draw.text((52, 35), f"Humidity {str(int(humid))} % rH", font=nf, fill=1)
-        draw.text((52, 50), f"Pressure {str(int(pressure))} hPa", font=nf, fill=1)
+        draw.text((50, 20), f"Temp {str(round(tempC, 1))}oC", font=nf, fill=1)
+        draw.text((50, 35), f"Humid {str(int(humid))}%rH", font=nf, fill=1)
+        draw.text((50, 50), f"Pressu {str(int(pressure))}hPa", font=nf, fill=1)
 
 
 def loop():
@@ -84,14 +84,14 @@ def loop():
             screen_display(device, date_time, uva, uvb, tempC, humid, pressure)
 
             # Saving the data every one min as json file
-            if len(ts) == 10:
-                min_dict['time_stamp'] = ts
-                min_dict['temp'] = temp
-                min_dict['pressure'] = press
-                min_dict['humidity'] = hum
-                min_dict['uva'] = uva_lst
-                min_dict['uvb'] = uvb_lst
-                min_dict['uvi'] = uvi_lst
+            if len(ts) == 60:
+                min_dict['time_stamp'] = ts[::6]
+                min_dict['temp'] = temp[::6]
+                min_dict['pressure'] = press[::6]
+                min_dict['humidity'] = hum[::6]
+                min_dict['uva'] = uva_lst[::6]
+                min_dict['uvb'] = uvb_lst[::6]
+                min_dict['uvi'] = uvi_lst[::6]
                 file_time = datetime.now()
                 fpath = "data/"
                 date = file_time.strftime("%Y-%m-%d")
@@ -110,7 +110,7 @@ def loop():
                 uvb_lst = []
                 uvi_lst = []
                 ts = []
-            time.sleep(6)
+            time.sleep(1)
 
 
 def destroy():
