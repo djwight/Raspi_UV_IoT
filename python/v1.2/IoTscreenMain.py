@@ -77,7 +77,8 @@ def loop():
             uvi_lst.append(uvi)
 
             # Display values on oled
-            date_time = now.strftime("%d-%m-%Y %T")
+            screen_time = datetime.now()
+            date_time = screen_time.strftime("%d-%m-%Y %T")
             screen_display(device, date_time, uva, uvb, tempC, humid, pressure)
 
             # Saving the data every one min as json file
