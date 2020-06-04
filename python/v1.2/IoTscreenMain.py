@@ -122,7 +122,6 @@ def loop():
 
 
 def destroy():
-    device.clear()
     GPIO.cleanup()
 
 
@@ -133,6 +132,7 @@ def shutdown():
     with canvas(device) as draw:
         draw.text((2, 10), "IoT device shutting down...", font=fformat, fill=1)
         time.sleep(2)
+    device.clear()
     os.system('sudo shutdown -h now')
 
 
