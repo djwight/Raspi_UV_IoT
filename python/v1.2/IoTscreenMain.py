@@ -131,15 +131,15 @@ def shutdown():
     size = 14
     fformat = ImageFont.truetype(font_path, size)
     with canvas(device) as draw:
-        draw.text((2, 10), "IoT device shutting down...\nGoodbye", font=fformat, fill=1)
-        time.sleep(1)
+        draw.text((2, 10), "IoT device shutting down...", font=fformat, fill=1)
+        time.sleep(2)
     os.system('sudo shutdown -h now')
 
 
 # Main script
 if __name__ == "__main__":
     print("Starting...")
-    btn = Button(18, hold_time=5)
+    btn = Button(18, hold_time=4)
     UV_VEML6075 = DFRobot_VEML6075(1, 0x10)
     while UV_VEML6075.begin() != True:
         print("UV sensor boot failed!")
