@@ -27,16 +27,16 @@ def bme280_setup():
 
 
 def screen_display(device, date_time, uva, uvb, tempC, humid, pressure):
-    size = 12
+    size = 11
     nf = ImageFont.truetype(font_path, size)
-    datef = ImageFont.truetype(font_path, 13)
+    datef = ImageFont.truetype(font_path, 10)
     with canvas(device) as draw:
-        draw.text((2, 10), f"{date_time}", font=datef, fill=1)
-        draw.text((2, 30), f"UVA {str(round(uva, 2))}", font=nf, fill=1)
-        draw.text((2, 45), f"UVB {str(round(uvb, 2))}", font=nf, fill=1)
-        draw.text((55, 20), f"Temp {str(round(tempC, 2))}oC", font=nf, fill=1)
-        draw.text((55, 35), f"Humidity {str(round(humid, 2))} % rH", font=nf, fill=1)
-        draw.text((55, 50), f"Pressure {str(round(pressure, 2))} hPa", font=nf, fill=1)
+        draw.text((1, 10), f"{date_time}", font=datef, fill=1)
+        draw.text((1, 30), f"UVa {str(round(uva, 2))}", font=nf, fill=1)
+        draw.text((2, 45), f"UVb {str(round(uvb, 2))}", font=nf, fill=1)
+        draw.text((52, 20), f"Temp {str(round(tempC, 1))}oC", font=nf, fill=1)
+        draw.text((52, 35), f"Humidity {str(int(humid))} % rH", font=nf, fill=1)
+        draw.text((52, 50), f"Pressure {str(int(pressure))} hPa", font=nf, fill=1)
 
 
 def loop():
