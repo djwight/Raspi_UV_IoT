@@ -15,7 +15,7 @@ from luma.core.render import canvas
 from PIL import ImageFont
 
 font_path = 'FreePixel.ttf'
-
+btn_on_off = 1
 
 def bme280_setup():
     global bus
@@ -42,13 +42,17 @@ def screen_display(device, date_time, uva, uvb, tempC, humid, pressure):
 def screen_off():
     device.hide()
     global btn_on_off
-    btn_on_off = 0
+    num = 0
+    btn_on_off = num
+    return btn_on_off
 
 
 def screen_on():
     device.show()
     global btn_on_off
-    btn_on_off = 1
+    num = 1
+    btn_on_off = num
+    return btn_on_off
 
 
 def loop():
@@ -61,7 +65,6 @@ def loop():
     uvb_lst = []
     uvi_lst = []
     ts = []
-    btn_on_off = 1
     while True:
         if btn.is_held:
             shutdown(device)
@@ -70,6 +73,7 @@ def loop():
                 btn.when_pressed = screen_off
             elif btn_on_off == 0:
                 btn.when_pressed = screen_on
+            print(f"btn variable is: {btn_on_off}")
             # Temperature, pressure and humidity measurement
             bme280_data = bme280.sample(bus, address, calibration_params)
             tempC = bme280_data.temperature
@@ -135,6 +139,7 @@ def destroy():
 
 
 def shutdown(device):
+    device.show()
     print('Button pressed- system shutting down...')
     size = 11
     fformat = ImageFont.truetype(font_path, size)
