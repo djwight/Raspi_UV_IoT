@@ -17,6 +17,7 @@ from PIL import ImageFont
 font_path = 'FreePixel.ttf'
 btn_on_off = 1
 
+
 def bme280_setup():
     global bus
     bus = smbus2.SMBus(1)
@@ -73,7 +74,8 @@ def loop():
                 btn.when_pressed = screen_off
             elif btn_on_off == 0:
                 btn.when_pressed = screen_on
-            print(f"btn variable is: {btn_on_off}")
+            # print(f"btn variable is: {btn_on_off}")
+
             # Temperature, pressure and humidity measurement
             bme280_data = bme280.sample(bus, address, calibration_params)
             tempC = bme280_data.temperature
@@ -139,6 +141,7 @@ def destroy():
 
 
 def shutdown(device):
+    device.clear()
     device.show()
     print('Button pressed- system shutting down...')
     size = 11
