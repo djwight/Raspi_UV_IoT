@@ -149,7 +149,7 @@ def shutdown(device):
     with canvas(device) as draw:
         draw.text((2, 20), "Shutting down...", font=fformat, fill=1)
     time.sleep(2)
-    device.clear()
+    device.hide()
     destroy()
     time.sleep(0.5)
     os.system('sudo shutdown -h now')
