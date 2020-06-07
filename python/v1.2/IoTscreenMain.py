@@ -19,6 +19,7 @@ from PIL import ImageFont
 font_path = 'FreePixel.ttf'
 btn_on_off = 1
 my_format = '%d/%m/%Y %H:%M:%S'
+rtc = pyRPiRTC.DS1302(clk_pin=11, data_pin=13, ce_pin=15)
 
 
 def bme280_setup():
@@ -194,7 +195,6 @@ if __name__ == "__main__":
     print("UV sensor boot success...")
     serial = i2c(port=1, address=0x3c)
     device = sh1106(serial, rotate=0, width=128, height=64)
-    # rtc = pyRPiRTC.DS1302(clk_pin=11, data_pin=13, ce_pin=15)
     # set_date_time(datetime.now().strftime(my_format))
     try:
         bme280_setup()
