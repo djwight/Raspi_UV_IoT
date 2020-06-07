@@ -13,9 +13,11 @@ from luma.core.interface.serial import i2c
 from luma.oled.device import sh1106
 from luma.core.render import canvas
 from PIL import ImageFont
+import urllib.request
 
 font_path = 'FreePixel.ttf'
 btn_on_off = 1
+my_format = '%d/%m/%Y %H:%M:%S'
 
 
 def bme280_setup():
@@ -56,6 +58,12 @@ def screen_on():
     return btn_on_off
 
 
+def set_date_time(time, f=my_format):
+    global rtc
+    dt = datetime.strptime(time, f)
+    rtc.write_datetime(dt)
+
+
 def loop():
     # Data collection
     min_dict = {}
@@ -91,7 +99,10 @@ def loop():
             uvi = UV_VEML6075.getUvi(uva, uvb)
 
             # Data collection section
-            now = time.time()
+            if connect() == True:
+                now = time.time()
+            else:
+                now = rtc.read_datetime().timestamp()
             ts.append(now)
             temp.append(tempC)
             press.append(pressure)
@@ -101,7 +112,10 @@ def loop():
             uvi_lst.append(uvi)
 
             # Display values on oled
-            screen_time = datetime.now()
+            if connect() == True:
+                screen_time = datetime.now()
+            else:
+                screen_time = rtc.read_datetime()
             date_time = screen_time.strftime("%d-%m-%Y %T")
             screen_display(device, date_time, uva, uvb, tempC, humid, pressure)
 
@@ -114,7 +128,10 @@ def loop():
                 min_dict['uva'] = uva_lst[::6]
                 min_dict['uvb'] = uvb_lst[::6]
                 min_dict['uvi'] = uvi_lst[::6]
-                file_time = datetime.now()
+                if connect() == True:
+                    file_time = datetime.now()
+                else:
+                    file_time = rtc.read_datetime()
                 fpath = "data/"
                 date = file_time.strftime("%Y-%m-%d")
                 hour_min = file_time.strftime("%H_%M")
@@ -155,6 +172,16 @@ def shutdown(device):
     os.system('sudo shutdown -h now')
 
 
+def connect():
+    try:
+        urllib.request.urlopen('http://google.com')
+        print('Internet connected')
+        return True
+    except:
+        print('Internet NOT connected')
+        return False
+
+
 # Main script
 if __name__ == "__main__":
     print("Starting...")
@@ -166,6 +193,8 @@ if __name__ == "__main__":
     print("UV sensor boot success...")
     serial = i2c(port=1, address=0x3c)
     device = sh1106(serial, rotate=0, width=128, height=64)
+    rtc = pyRPiRTC.DS1302(clk_pin=11, data_pin=13, ce_pin=15)
+    # set_date_time(datetime.now().strftime(my_format))
     try:
         bme280_setup()
         loop()
