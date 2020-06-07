@@ -15,11 +15,9 @@ def set_date_time(time, f=my_format):
 
 print('Press CTRL + C to end the script!')
 try:
-    set_date_time(datetime.now().strftime(my_format)) # uncomment this to set date/time
+    #set_date_time(datetime.now().strftime(my_format)) # uncomment this to set date/time
     while True:
         cdt = rtc.read_datetime()
-        print(cdt.timestamp())
-        print(time.time())
         print('Current date: {}'.format(cdt.strftime('%d/%m/%Y')))
         print('Current time: {}\n'.format(cdt.strftime('%H:%M:%S')))
         time.sleep(1)
