@@ -11,16 +11,27 @@ Project to make a battery powered IoT device for the measurement of UV radiation
 - numpy>= 1.16
 - DFRobot_VEML6075.py library for UV sensor (https://github.com/DFRobot/DFRobot_VEML6075)
 - ADCDevice-1.0.2 library for PCF8591 (https://github.com/Freenove/Freenove_Super_Starter_Kit_for_Raspberry_Pi/tree/master/Libs/Python-Libs)
+- BME280 (`pip install RPi.bme280`)
+- luma.oled library (`sudo -H pip3 install –upgrade luma.oled`)
+- rpi.rtc (`git clone https://github.com/sourceperl/rpi.rtc.git`)
 
 
 ### Hardware Requirements
 
 - Raspberry Pi Zero W
-- Thermistor
-- Photoresistor
-- PCF8591 (or another ADC)
-- 5000 or 10000 mAh powerbank
+- BME280 (temp, humidity and pressure)
 - VEML6075 UV sensor
+- DS1302 RTC
+- 1.3inch luma OLED screen
+- 5000 or 10000 mAh powerbank
+
+### Prototype v1.2
+
+**v1.2 set up on the Breadboard**
+
+
+### Software v1.2- Python
+
 
 ### Prototype v1.1
 
