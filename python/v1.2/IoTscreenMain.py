@@ -3,6 +3,7 @@ import json
 import time
 from datetime import datetime
 import math
+import urllib.request
 from gpiozero import Button
 import RPi.GPIO as GPIO
 from DFRobot_VEML6075 import DFRobot_VEML6075
@@ -12,8 +13,8 @@ import sys
 from luma.core.interface.serial import i2c
 from luma.oled.device import sh1106
 from luma.core.render import canvas
+import pyRPiRTC
 from PIL import ImageFont
-import urllib.request
 
 font_path = 'FreePixel.ttf'
 btn_on_off = 1
