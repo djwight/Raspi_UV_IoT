@@ -77,7 +77,6 @@ def loop():
     uvi_lst = []
     ts = []
     while True:
-        internet_connection = connect()
         if btn.is_held:
             shutdown(device)
         else:
@@ -102,12 +101,7 @@ def loop():
             uvi = UV_VEML6075.getUvi(uva, uvb)
 
             # Data collection section
-            if internet_connection == True:
-                now = time.time()
-                print('got internet')
-            else:
-                now = rtc.read_datetime().timestamp()
-                print('no internet')
+            now = rtc.read_datetime().timestamp()
             ts.append(now)
             temp.append(tempC)
             press.append(pressure)
@@ -117,12 +111,7 @@ def loop():
             uvi_lst.append(uvi)
 
             # Display values on oled
-            if internet_connection == True:
-                screen_time = datetime.now()
-                print('got internet')
-            else:
-                screen_time = rtc.read_datetime()
-                print('no internet')
+            screen_time = rtc.read_datetime()
             date_time = screen_time.strftime("%d-%m-%Y %T")
             screen_display(device, date_time, uva, uvb, tempC, humid, pressure)
 
@@ -135,12 +124,7 @@ def loop():
                 min_dict['uva'] = uva_lst[::6]
                 min_dict['uvb'] = uvb_lst[::6]
                 min_dict['uvi'] = uvi_lst[::6]
-                if internet_connection == True:
-                    file_time = datetime.now()
-                    print('got internet')
-                else:
-                    file_time = rtc.read_datetime()
-                    print('no internet')
+                file_time = rtc.read_datetime()
                 fpath = "data/"
                 date = file_time.strftime("%Y-%m-%d")
                 hour_min = file_time.strftime("%H_%M")
