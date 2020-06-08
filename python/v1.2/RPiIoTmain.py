@@ -2,7 +2,6 @@ import os
 import json
 import time
 from datetime import datetime
-import math
 import urllib.request
 from gpiozero import Button, LED
 import RPi.GPIO as GPIO
