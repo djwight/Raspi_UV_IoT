@@ -34,13 +34,13 @@ def bme280_setup():
 def screen_display(device, screen_time, uva, uvb, tempC, humid, pressure):
     """Takes in the values from the sensors and diaplayed them on the
     oled screen."""
-    size = 10
+    size = 9
     nf = ImageFont.truetype(font_path, size)
     datef = ImageFont.truetype(font_path, 11)
     with canvas(device) as draw:
-        draw.text((1, 10), f"{date_time}", font=datef, fill=1)
-        draw.text((1, 25), f"UVa {str(round(uva, 2))}", font=nf, fill=1)
-        draw.text((1, 45), f"UVb {str(round(uvb, 2))}", font=nf, fill=1)
+        draw.text((1, 10), f"{screen_time}", font=datef, fill=1)
+        draw.text((1, 25), f"UVa {str(round(uva, 1))}", font=nf, fill=1)
+        draw.text((1, 45), f"UVb {str(round(uvb, 1))}", font=nf, fill=1)
         draw.text((50, 25), f"Temp {str(round(tempC, 1))}oC", font=nf, fill=1)
         draw.text((50, 38), f"Humid {str(int(humid))} %", font=nf, fill=1)
         draw.text((50, 50), f"Pressu {str(int(pressure))}hPa", font=nf, fill=1)
@@ -149,13 +149,14 @@ def loop():
                 uvi_lst = []
                 ts = []
                 led.blink(on_time=0.1, off_time=0.05, n=3)
-            time.sleep(1)
+            time.sleep(0.9)
 
 
 def destroy():
     """Clears up all the GPIO and clears the screen."""
     device.clear()
-    GPIO.cleanup()
+    led.close()
+    btn.close()
 
 
 def shutdown(device):
