@@ -4,7 +4,7 @@ import time
 from datetime import datetime
 import math
 import urllib.request
-from gpiozero import Button
+from gpiozero import Button, LED
 import RPi.GPIO as GPIO
 from DFRobot_VEML6075 import DFRobot_VEML6075
 import smbus2
@@ -150,6 +150,8 @@ def loop():
                 uvb_lst = []
                 uvi_lst = []
                 ts = []
+                led.blink(on_time=0.1, off_time=0.1, n=4)
+                print("LED should be blinking")
             time.sleep(1)
 
 
@@ -188,6 +190,7 @@ def connect():
 if __name__ == "__main__":
     print("Starting IoT device...")
     btn = Button(18, hold_time=4)
+    led = LED(23)
     UV_VEML6075 = DFRobot_VEML6075(1, 0x10)
     while UV_VEML6075.begin() != True:
         print("UV sensor boot failed!")
