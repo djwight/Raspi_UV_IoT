@@ -31,7 +31,7 @@ def bme280_setup():
     calibration_params = bme280.load_calibration_params(bus, address)
 
 
-def screen_display(device, date_time, uva, uvb, tempC, humid, pressure):
+def screen_display(device, screen_time, uva, uvb, tempC, humid, pressure):
     """Takes in the values from the sensors and diaplayed them on the
     oled screen."""
     size = 10
@@ -108,7 +108,8 @@ def loop():
             uvi = UV_VEML6075.getUvi(uva, uvb)
 
             # Data collection section
-            now = rtc.read_datetime().timestamp()
+            date_time = rtc.read_datetime()
+            now = date_time.timestamp()
             ts.append(now)
             temp.append(tempC)
             press.append(pressure)
@@ -118,9 +119,8 @@ def loop():
             uvi_lst.append(uvi)
 
             # Display values on oled
-            screen_time = rtc.read_datetime()
-            date_time = screen_time.strftime("%d-%m-%Y %T")
-            screen_display(device, date_time, uva, uvb, tempC, humid, pressure)
+            screen_time = date_time.strftime("%d-%m-%Y %T")
+            screen_display(device, screen_time, uva, uvb, tempC, humid, pressure)
 
             # Saving the data every one min as json file
             if len(ts) == 60:
@@ -131,10 +131,9 @@ def loop():
                 min_dict['uva'] = uva_lst[::6]
                 min_dict['uvb'] = uvb_lst[::6]
                 min_dict['uvi'] = uvi_lst[::6]
-                file_time = rtc.read_datetime()
                 fpath = "data/"
-                date = file_time.strftime("%Y-%m-%d")
-                hour_min = file_time.strftime("%H_%M")
+                date = date_time.strftime("%Y-%m-%d")
+                hour_min = date_time.strftime("%H_%M")
                 filename = "IoT_UV_" + date + "__" + hour_min + ".json"
                 if not os.path.exists(fpath):
                     os.makedirs(fpath)
@@ -149,8 +148,7 @@ def loop():
                 uvb_lst = []
                 uvi_lst = []
                 ts = []
-                led.blink(on_time=0.1, off_time=0.1, n=4)
-                print("LED should be blinking")
+                led.blink(on_time=0.1, off_time=0.05, n=3)
             time.sleep(1)
 
 
