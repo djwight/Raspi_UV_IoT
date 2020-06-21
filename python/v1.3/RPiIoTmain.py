@@ -76,12 +76,12 @@ def btn_control():
     while True:
         if btn.is_held:
             shutdown(device)
-        else:
-            if btn_on_off == 1:
-                btn.when_pressed = screen_off
-            elif btn_on_off == 0:
-                btn.when_pressed = screen_on
-                # print(f"btn variable is: {btn_on_off}")
+        elif btn_on_off == 1:
+            btn.when_pressed = screen_off
+        elif btn_on_off == 0:
+            btn.when_pressed = screen_on
+            # print(f"btn variable is: {btn_on_off}")
+        time.sleep(0.5)
 
 
 def rec_loop():
@@ -194,7 +194,7 @@ if __name__ == "__main__":
     btn = Button(18, hold_time=4)
     led = LED(23)
     UV_VEML6075 = DFRobot_VEML6075(1, 0x10)
-    while UV_VEML6075.begin() != True:
+    while UV_VEML6075.begin() is not True:
         print("UV sensor boot failed!")
         time.sleep(2)
     print("UV sensor boot success...")
@@ -202,7 +202,10 @@ if __name__ == "__main__":
     device = sh1106(serial, rotate=0, width=128, height=64)
     btn_loop = threading.Thread(target=btn_control)
     main_loop = threading.Thread(target=rec_loop)
-    # set_date_time(datetime.now().strftime(my_format))
+    if connect() is True:
+        set_date_time(datetime.now().strftime(my_format))
+    else:
+        break
     try:
         bme280_setup()
         for i in (btn_loop, main_loop):
