@@ -76,12 +76,12 @@ def btn_control():
     while True:
         if btn.is_held:
             shutdown(device)
-    else:
-        if btn_on_off == 1:
-            btn.when_pressed = screen_off
-        elif btn_on_off == 0:
-            btn.when_pressed = screen_on
-        # print(f"btn variable is: {btn_on_off}")
+        else:
+            if btn_on_off == 1:
+                btn.when_pressed = screen_off
+            elif btn_on_off == 0:
+                btn.when_pressed = screen_on
+                # print(f"btn variable is: {btn_on_off}")
 
 
 def rec_loop():
