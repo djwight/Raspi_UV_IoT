@@ -81,7 +81,7 @@ def btn_control():
         elif btn_on_off == 0:
             btn.when_pressed = screen_on
             # print(f"btn variable is: {btn_on_off}")
-        time.sleep(0.5)
+        time.sleep(1)
 
 
 def rec_loop():
@@ -153,7 +153,7 @@ def rec_loop():
             uvi_lst = []
             ts = []
             led.blink(on_time=0.1, off_time=0.05, n=3)
-        time.sleep(0.9)
+        time.sleep(0.8)
 
 
 def destroy():
