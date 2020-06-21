@@ -204,8 +204,6 @@ if __name__ == "__main__":
     main_loop = threading.Thread(target=rec_loop)
     if connect() is True:
         set_date_time(datetime.now().strftime(my_format))
-    else:
-        break
     try:
         bme280_setup()
         for i in (btn_loop, main_loop):
